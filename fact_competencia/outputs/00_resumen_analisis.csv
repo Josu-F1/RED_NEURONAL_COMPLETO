@@ -1,0 +1,9 @@
+Métrica,Valor,Estado
+Muestras,1200,✅
+Features Totales,179,⚠️ ALTO
+Ratio Muestras:Features,1:0.15,🔴 CRÍTICO
+Silhouette Score,0.0328,🔴 Mal
+Davies-Bouldin Index,5.5718,⚠️
+Features Correlacionadas (>0.9),7,⚠️
+PCA - Componentes para 95% var.,84,✅
+PCA - Componentes para 90% var.,54,✅

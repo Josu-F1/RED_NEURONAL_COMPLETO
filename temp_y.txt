@@ -1,0 +1,17 @@
+
+--- fact_abastecimiento_logistica ---
+new_key = f"{parent_key}{sep}{k}" if parent_key else k
+# Crear target: entrega satisfactoria (cantidad_recibida >= 0.90 * cantidad_solicitada)
+y = ((df['cantidad_recibida'] / df['cantidad_solicitada']) >= 0.90).astype(int)
+print(f"✅ Target creado: Entrega Satisfactoria (>= 90%)")
+y = (df[numeric_cols[0]] > df[numeric_cols[0]].median()).astype(int)
+print(f"⚠️ Target creado automáticamente")
+n_features_display = min(30, df_encoded.shape[1])
+mask = y == class_val
+
+--- fact_evaluacion_proveedores ---
+new_key = f"{parent_key}{sep}{k}" if parent_key else k
+# Crear target basado en una métrica numérica
+y = (df[numeric_cols[0]] > df[numeric_cols[0]].median()).astype(int)
+print(f"✅ Target binario creado")
+mask = y == val

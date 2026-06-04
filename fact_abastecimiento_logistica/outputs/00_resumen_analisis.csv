@@ -1,0 +1,8 @@
+Métrica,Valor
+Muestras,2500
+Features,317
+Ratio,1:0.13
+Silhouette,-0.0015
+Davies-Bouldin,41.5312
+Pares Correlacionados,51
+PCA 95% var.,94

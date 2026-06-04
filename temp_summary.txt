@@ -1,0 +1,55 @@
+======================
+fact_abastecimiento_logistica/01_analisis_correlacion_separabilidad.ipynb
+
+📊 MÉTRICAS DE SEPARABILIDAD:
+Silhouette Score: 0.0008 🔴
+Davies-Bouldin: 50.8940 ⚠️
+
+
+📊 TABLA RESUMEN:
+              Métrica   Valor
+             Muestras    2500
+             Features     318
+                Ratio  1:0.13
+           Silhouette  0.0008
+       Davies-Bouldin 50.8940
+Pares Correlacionados      53
+         PCA 95% var.      94
+
+======================
+fact_competencia/01_analisis_correlacion_separabilidad.ipynb
+
+📊 MÉTRICAS DE SEPARABILIDAD:
+
+Silhouette Score: 0.0328
+  → Rango: [-1, 1]
+  → > 0.5: Bien separado
+  → 0.3-0.5: Moderadamente separado
+  → < 0.3: Mal separado
+  ➜ RESULTADO: 🔴 MALO
+
+Davies-Bouldin Index: 5.5718
+  → Menor es mejor
+  → < 1: Bien separado
+  ➜ RESULTADO: ⚠️ OK
+
+Calinski-Harabasz Index: 16.1519
+  → Mayor es mejor
+  → > 100: Bien separado
+
+
+📊 TABLA RESUMEN:
+                        Métrica  Valor    Estado
+                       Muestras   1200         ✅
+               Features Totales    179   ⚠️ ALTO
+        Ratio Muestras:Features 1:0.15 🔴 CRÍTICO
+               Silhouette Score 0.0328     🔴 Mal
+           Davies-Bouldin Index 5.5718        ⚠️
+Features Correlacionadas (>0.9)      7        ⚠️
+PCA - Componentes para 95% var.     84         ✅
+PCA - Componentes para 90% var.     54         ✅
+
+✅ Resumen guardado en outputs/00_resumen_analisis.csv
+
+======================
+fact_evaluacion_proveedores/01_analisis_correlacion_separabilidad.ipynb
