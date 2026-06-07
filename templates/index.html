@@ -505,6 +505,84 @@
             {% endfor %}
         };
 
+        const labelMappings = {
+            "region_natural": [
+                { value: 1.0, label: "Costa" },
+                { value: 2.0, label: "Sierra" },
+                { value: 3.0, label: "Oriente" },
+                { value: 4.0, label: "Insular" }
+            ],
+            "region": [
+                { value: 1.0, label: "Costa" },
+                { value: 2.0, label: "Sierra" },
+                { value: 3.0, label: "Oriente" },
+                { value: 4.0, label: "Insular" }
+            ],
+            "tipo_sucursal": [
+                { value: 1.0, label: "Sucursal Tipo A (Grande / Hipermercado)" },
+                { value: 2.0, label: "Sucursal Tipo B (Mediana / Supermercado)" },
+                { value: 3.0, label: "Sucursal Tipo C (Pequeña / Express)" },
+                { value: 4.0, label: "Canal Digital (Online)" }
+            ],
+            "canal": [
+                { value: 1.0, label: "Venta Física Directa" },
+                { value: 2.0, label: "Distribuidor Autorizado" },
+                { value: 3.0, label: "Minorista local" },
+                { value: 4.0, label: "Mayorista comercial" }
+            ],
+            "categoria_producto": [
+                { value: 1.0, label: "Alimentos Frescos" },
+                { value: 2.0, label: "Bebidas y Licores" },
+                { value: 3.0, label: "Limpieza del Hogar" },
+                { value: 4.0, label: "Cuidado Personal" },
+                { value: 5.0, label: "Electrodomésticos y Hogar" },
+                { value: 6.0, label: "Electrónica y Tecnología" },
+                { value: 7.0, label: "Ropa y Calzado" },
+                { value: 8.0, label: "Herramientas y Ferretería" },
+                { value: 9.0, label: "Juguetes y Ocio" },
+                { value: 10.0, label: "Mascotas" },
+                { value: 11.0, label: "Librería y Papelería" },
+                { value: 12.0, label: "Otros y Varios" }
+            ],
+            "clase": [
+                { value: 1.0, label: "Línea Económica" },
+                { value: 2.0, label: "Línea Estándar" },
+                { value: 3.0, label: "Línea Premium / VIP" }
+            ],
+            "es_fin_semana": [
+                { value: 0.0, label: "Día Laborable (Lun-Vie)" },
+                { value: 1.0, label: "Fin de Semana (Sáb-Dom)" }
+            ],
+            "es_feriado": [
+                { value: 0.0, label: "Día Hábil Normal" },
+                { value: 1.0, label: "Día Festivo / Feriado" }
+            ],
+            "entregado_a_tiempo": [
+                { value: 0.0, label: "A Tiempo (Sin retraso)" },
+                { value: 1.0, label: "Tardío (Con retraso)" }
+            ],
+            "tipo_contrato": [
+                { value: 1.0, label: "Contrato Anual Fijo" },
+                { value: 2.0, label: "Contrato Trimestral Variable" },
+                { value: 3.0, label: "Contrato Temporal" }
+            ],
+            "estado_producto": [
+                { value: 1.0, label: "Estado Nuevo / Óptimo" },
+                { value: 2.0, label: "Estado Aceptable" },
+                { value: 3.0, label: "Deterioro Menor" }
+            ],
+            "origen_producto": [
+                { value: 1.0, label: "Producción Local" },
+                { value: 2.0, label: "Importación Directa" }
+            ],
+            "trimestre": [
+                { value: 1.0, label: "Trimestre 1 (Q1)" },
+                { value: 2.0, label: "Trimestre 2 (Q2)" },
+                { value: 3.0, label: "Trimestre 3 (Q3)" },
+                { value: 4.0, label: "Trimestre 4 (Q4)" }
+            ]
+        };
+
         let activeModelId = "";
 
         // Function to select and render active model
@@ -549,7 +627,24 @@
 
                 group.appendChild(label);
 
-                if (field.type === 'categorical') {
+                if (labelMappings[field.name]) {
+                    // Render mapped categories as a dropdown/combobox
+                    const select = document.createElement('select');
+                    select.name = field.name;
+                    select.id = field.name;
+                    select.required = true;
+
+                    labelMappings[field.name].forEach(opt => {
+                        const option = document.createElement('option');
+                        option.value = opt.value;
+                        option.innerText = opt.label;
+                        if (parseFloat(opt.value) === parseFloat(field.default)) {
+                            option.selected = true;
+                        }
+                        select.appendChild(option);
+                    });
+                    group.appendChild(select);
+                } else if (field.type === 'categorical') {
                     const select = document.createElement('select');
                     select.name = field.name;
                     select.id = field.name;
