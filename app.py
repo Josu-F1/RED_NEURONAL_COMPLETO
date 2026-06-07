@@ -76,7 +76,7 @@ def predict(model_name):
         
         # Align One-Hot Columns
         one_hot_cols = meta["one_hot_columns"]
-        X_encoded = pd.DataFrame(0, index=[0], columns=one_hot_cols)
+        X_encoded = pd.DataFrame(0.0, index=[0], columns=one_hot_cols)
         
         for col in df_in.columns:
             val = df_in.loc[0, col]
@@ -84,14 +84,15 @@ def predict(model_name):
                 # Categorical: set corresponding one-hot column to 1
                 oh_col = f"{col}_{val}"
                 if oh_col in X_encoded.columns:
-                    X_encoded.loc[0, oh_col] = 1
+                    X_encoded.loc[0, oh_col] = 1.0
             else:
                 # Numeric: convert to float and set
                 if col in X_encoded.columns:
                     try:
                         X_encoded.loc[0, col] = float(val)
-                    except:
-                        pass # use default 0
+                    except Exception as e:
+                        print(f"Error parsing numeric field {col}: {e}")
+                        pass # use default 0.0
                         
         # Apply QuantileTransformer scaling
         X = X_encoded.values.astype(float)
