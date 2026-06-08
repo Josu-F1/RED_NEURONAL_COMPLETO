@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
-workspace_dir = "C:/Users/ASUS/OneDrive/Escritorio/RED_NEURONAL_COMPLETO"
+workspace_dir = os.path.dirname(os.path.abspath(__file__))
 folder_names = {
     "ventas": "fact_ventas",
     "evaluacion": "fact_evaluacion_proveedores",
