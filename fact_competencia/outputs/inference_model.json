@@ -3268,5 +3268,33 @@
     "Igual Competidor",
     "Alto Competidor"
   ],
-  "target_col": "y_posicion"
+  "target_col": "y_posicion",
+  "original_feature_names": [
+    "precio_nuestro",
+    "precio_competidor",
+    "diferencia_precio",
+    "pct_diferencia",
+    "margen_ganancia",
+    "precio_costo",
+    "region",
+    "categoria_producto",
+    "nombre_competidor",
+    "anio_ingreso",
+    "clase",
+    "origen_REAL",
+    "origen_SINTETICO"
+  ],
+  "selected_feature_indices": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12
+  ]
 }

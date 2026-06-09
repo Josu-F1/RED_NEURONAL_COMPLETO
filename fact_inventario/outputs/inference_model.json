@@ -651,5 +651,37 @@
     "Normal",
     "Exceso"
   ],
-  "target_col": "y_estado_stock"
+  "target_col": "y_estado_stock",
+  "original_feature_names": [
+    "stock_actual",
+    "stock_minimo",
+    "ratio_stock",
+    "dias_sin_movimiento",
+    "valor_unitario",
+    "valor_total_inventario",
+    "margen_ganancia",
+    "region_natural",
+    "tipo_sucursal",
+    "categoria_producto",
+    "origen_producto",
+    "clase",
+    "origen_REAL",
+    "origen_SINTETICO"
+  ],
+  "selected_feature_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ]
 }

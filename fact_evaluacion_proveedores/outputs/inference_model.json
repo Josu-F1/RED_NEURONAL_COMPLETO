@@ -3414,5 +3414,35 @@
     "Desempeño Medio",
     "Alto Desempeño"
   ],
-  "target_col": "y_desempeno"
+  "target_col": "y_desempeno",
+  "original_feature_names": [
+    "tasa_rechazo_pct",
+    "tiempo_entrega_dias",
+    "entregado_a_tiempo",
+    "calificacion_entrega",
+    "costo_adquisicion_total",
+    "calificacion_proveedor",
+    "tipo_contrato",
+    "region_natural",
+    "margen_ganancia",
+    "estado_producto",
+    "clase",
+    "origen_REAL",
+    "origen_SINTETICO"
+  ],
+  "selected_feature_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ]
 }

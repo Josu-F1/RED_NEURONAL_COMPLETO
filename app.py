@@ -86,29 +86,45 @@ def predict(model_name):
         # Form input dataframe
         df_in = pd.DataFrame([input_data])
         
-        # Align One-Hot Columns
-        one_hot_cols = meta["one_hot_columns"]
-        X_encoded = pd.DataFrame(0.0, index=[0], columns=one_hot_cols)
-        
-        for col in df_in.columns:
-            val = df_in.loc[0, col]
-            if col in meta["categorical_cols"]:
-                # Categorical: set corresponding one-hot column to 1
-                oh_col = f"{col}_{val}"
-                if oh_col in X_encoded.columns:
-                    X_encoded.loc[0, oh_col] = 1.0
-            else:
-                # Numeric: convert to float and set
-                if col in X_encoded.columns:
-                    try:
-                        X_encoded.loc[0, col] = float(val)
-                    except Exception as e:
-                        print(f"Error parsing numeric field {col}: {e}")
-                        pass # use default 0.0
-                        
-        # Apply QuantileTransformer scaling
-        X = X_encoded.values.astype(float)
-        X_scaled = qt.transform(X)
+        # Fix for QuantileTransformer: it expects original feature shape, not just selected
+        if "original_feature_names" in meta and "selected_feature_indices" in meta:
+            feature_names = meta["original_feature_names"]
+            X_encoded = pd.DataFrame(0.0, index=[0], columns=feature_names)
+            
+            for col in df_in.columns:
+                val = df_in.loc[0, col]
+                if col in meta["categorical_cols"]:
+                    oh_col = f"{col}_{val}"
+                    if oh_col in X_encoded.columns:
+                        X_encoded.loc[0, oh_col] = 1.0
+                else:
+                    if col in X_encoded.columns:
+                        try:
+                            X_encoded.loc[0, col] = float(val)
+                        except Exception as e:
+                            pass
+                            
+            X_scaled_full = qt.transform(X_encoded.values.astype(float))
+            X_scaled = X_scaled_full[:, meta["selected_feature_indices"]]
+        else:
+            # Fallback old behavior
+            one_hot_cols = meta["one_hot_columns"]
+            X_encoded = pd.DataFrame(0.0, index=[0], columns=one_hot_cols)
+            
+            for col in df_in.columns:
+                val = df_in.loc[0, col]
+                if col in meta["categorical_cols"]:
+                    oh_col = f"{col}_{val}"
+                    if oh_col in X_encoded.columns:
+                        X_encoded.loc[0, oh_col] = 1.0
+                else:
+                    if col in X_encoded.columns:
+                        try:
+                            X_encoded.loc[0, col] = float(val)
+                        except:
+                            pass
+                            
+            X_scaled = qt.transform(X_encoded.values.astype(float))
         
         # Load weights
         W1 = np.array(meta["W1"])

@@ -3341,5 +3341,35 @@
     "Rentabilidad Estándar",
     "Alta Rentabilidad"
   ],
-  "target_col": "y_rentabilidad"
+  "target_col": "y_rentabilidad",
+  "original_feature_names": [
+    "margen_pct",
+    "descuento_pct",
+    "cantidad",
+    "precio_unitario",
+    "costo_unitario",
+    "utilidad_bruta",
+    "region_natural",
+    "tipo_sucursal",
+    "canal",
+    "categoria_producto",
+    "es_fin_semana",
+    "clase",
+    "origen_REAL",
+    "origen_SINTETICO"
+  ],
+  "selected_feature_indices": [
+    0,
+    1,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ]
 }
