@@ -5,10 +5,10 @@ Función de Activación Oculta,Sigmoide (Múltiples regresiones logísticas para
 Tasa de Aprendizaje Inicial,0.1
 Regularización L2 (lambda),0.001
 Épocas de Entrenamiento,1000
-Muestras de Train Final (80%),17263
-Muestras de Test Final (20%),4316
-Accuracy Promedio Folds (CV),76.6856
-Accuracy Final Train Set,92.5737
-Accuracy Final Test Set,93.0028
-Loss Final Train Set,0.213105
-Loss Final Test Set,0.205531
+Muestras de Train Final (80%),13809
+Muestras de Test Final (20%),3100
+Accuracy Promedio Folds (CV),75.5301
+Accuracy Final Train Set,92.9973
+Accuracy Final Test Set,92.0
+Loss Final Train Set,0.209758
+Loss Final Test Set,0.213498
