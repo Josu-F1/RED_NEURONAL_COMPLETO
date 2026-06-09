@@ -489,6 +489,14 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Dispersion Plot Card -->
+        <div class="card" id="dispersion-card" style="margin-top: 1rem;">
+            <div class="card-title">Gráfico de Dispersión Espacial t-SNE</div>
+            <div style="display: flex; justify-content: center; align-items: center; background-color: #0d1117; padding: 1.5rem; border-radius: var(--radius-sm); border: 1px solid var(--border-clr);">
+                <img id="dispersion-img" src="" alt="Gráfico de Dispersión t-SNE" style="max-width: 80%; height: auto; border-radius: var(--radius-sm); box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+            </div>
+        </div>
     </div>    <!-- JS Logic -->
     <script>
         // Models schema injected from Jinja
@@ -604,6 +612,12 @@
 
             // Reset results area
             resetResults();
+
+            // Update dispersion plot image
+            const dispersionImg = document.getElementById('dispersion-img');
+            if (dispersionImg) {
+                dispersionImg.src = `/plot/${modelId}/dispersion?t=${new Date().getTime()}`;
+            }
 
             // Populate form fields
             const container = document.getElementById('form-fields-container');

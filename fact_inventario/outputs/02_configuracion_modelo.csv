@@ -1,0 +1,14 @@
+parametro,valor
+Tipo de Modelo,Red Neuronal Artificial (MLP) de 3 Capas
+Capas Ocultas (hidden_units),"Capa 1: 16 Neuronas, Capa 2: 10 Neuronas"
+Función de Activación Oculta,Sigmoide (Múltiples regresiones logísticas paralelas)
+Tasa de Aprendizaje Inicial,0.1
+Regularización L2 (lambda),0.001
+Épocas de Entrenamiento,1000
+Muestras de Train Final (80%),9868
+Muestras de Test Final (20%),2468
+Accuracy Promedio Folds (CV),92.5583
+Accuracy Final Train Set,96.9193
+Accuracy Final Test Set,96.718
+Loss Final Train Set,0.088384
+Loss Final Test Set,0.094437

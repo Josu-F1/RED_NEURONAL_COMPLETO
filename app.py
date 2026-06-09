@@ -57,6 +57,18 @@ def index():
         })
     return render_template("index.html", available_models=available_models)
 
+@app.route("/plot/<model_name>/dispersion")
+def get_dispersion_plot(model_name):
+    if model_name not in folder_names:
+        return "Model not found", 404
+    folder = folder_names[model_name]
+    img_path = os.path.join(workspace_dir, folder, "outputs", "tsne_dispersion.png")
+    if os.path.exists(img_path):
+        from flask import send_file
+        return send_file(img_path, mimetype='image/png')
+    else:
+        return "Image not found", 404
+
 @app.route("/predict/<model_name>", methods=["POST"])
 def predict(model_name):
     if model_name not in models:
